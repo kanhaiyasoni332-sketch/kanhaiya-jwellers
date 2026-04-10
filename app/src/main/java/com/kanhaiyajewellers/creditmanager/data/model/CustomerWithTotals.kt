@@ -6,5 +6,9 @@ data class CustomerWithTotals(
     val phone: String,
     val totalPending: Double,
     val totalPaid: Double,
-    val nextPromiseDate: Long?
+    val nextPromiseDate: Long?,
+    val completedPayments: Int,
+    val overduePendingCount: Int,
+    val totalTransactionValue: Double,
+    val isLoyalCustomer: Boolean
 )

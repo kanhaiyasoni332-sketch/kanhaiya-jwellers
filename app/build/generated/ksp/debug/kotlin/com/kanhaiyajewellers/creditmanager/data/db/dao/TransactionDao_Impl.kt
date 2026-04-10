@@ -7,10 +7,12 @@ import androidx.room.util.performSuspending
 import androidx.sqlite.SQLiteStatement
 import com.kanhaiyajewellers.creditmanager.`data`.db.entity.Transaction
 import com.kanhaiyajewellers.creditmanager.`data`.model.CustomerWithTotals
+import com.kanhaiyajewellers.creditmanager.`data`.model.LoyaltyStatus
 import com.kanhaiyajewellers.creditmanager.`data`.model.ReminderPayload
 import com.kanhaiyajewellers.creditmanager.`data`.model.TransactionWithCustomer
 import com.kanhaiyajewellers.creditmanager.`data`.model.UpcomingPaymentItem
 import javax.`annotation`.processing.Generated
+import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.Long
@@ -65,6 +67,7 @@ public class TransactionDao_Impl(
     val _sql: String = """
         |
         |        SELECT t.id           AS transactionId,
+        |               t.customer_id  AS customerId,
         |               c.name         AS customerName,
         |               c.phone        AS phone,
         |               t.item_name    AS itemName,
@@ -86,21 +89,24 @@ public class TransactionDao_Impl(
       val _stmt: SQLiteStatement = _connection.prepare(_sql)
       try {
         val _cursorIndexOfTransactionId: Int = 0
-        val _cursorIndexOfCustomerName: Int = 1
-        val _cursorIndexOfPhone: Int = 2
-        val _cursorIndexOfItemName: Int = 3
-        val _cursorIndexOfItemWeight: Int = 4
-        val _cursorIndexOfPromiseDate: Int = 5
-        val _cursorIndexOfTotalAmount: Int = 6
-        val _cursorIndexOfPaidAmount: Int = 7
-        val _cursorIndexOfRemainingAmount: Int = 8
-        val _cursorIndexOfStatus: Int = 9
-        val _cursorIndexOfCreatedAt: Int = 10
+        val _cursorIndexOfCustomerId: Int = 1
+        val _cursorIndexOfCustomerName: Int = 2
+        val _cursorIndexOfPhone: Int = 3
+        val _cursorIndexOfItemName: Int = 4
+        val _cursorIndexOfItemWeight: Int = 5
+        val _cursorIndexOfPromiseDate: Int = 6
+        val _cursorIndexOfTotalAmount: Int = 7
+        val _cursorIndexOfPaidAmount: Int = 8
+        val _cursorIndexOfRemainingAmount: Int = 9
+        val _cursorIndexOfStatus: Int = 10
+        val _cursorIndexOfCreatedAt: Int = 11
         val _result: MutableList<TransactionWithCustomer> = mutableListOf()
         while (_stmt.step()) {
           val _item: TransactionWithCustomer
           val _tmpTransactionId: Long
           _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
           val _tmpCustomerName: String
           _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
           val _tmpPhone: String
@@ -126,7 +132,7 @@ public class TransactionDao_Impl(
           val _tmpCreatedAt: Long
           _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
           _item =
-              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
+              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
           _result.add(_item)
         }
         _result
@@ -140,6 +146,7 @@ public class TransactionDao_Impl(
     val _sql: String = """
         |
         |        SELECT t.id           AS transactionId,
+        |               t.customer_id  AS customerId,
         |               c.name         AS customerName,
         |               c.phone        AS phone,
         |               t.item_name    AS itemName,
@@ -166,21 +173,24 @@ public class TransactionDao_Impl(
         _argIndex = 2
         _stmt.bindText(_argIndex, query)
         val _cursorIndexOfTransactionId: Int = 0
-        val _cursorIndexOfCustomerName: Int = 1
-        val _cursorIndexOfPhone: Int = 2
-        val _cursorIndexOfItemName: Int = 3
-        val _cursorIndexOfItemWeight: Int = 4
-        val _cursorIndexOfPromiseDate: Int = 5
-        val _cursorIndexOfTotalAmount: Int = 6
-        val _cursorIndexOfPaidAmount: Int = 7
-        val _cursorIndexOfRemainingAmount: Int = 8
-        val _cursorIndexOfStatus: Int = 9
-        val _cursorIndexOfCreatedAt: Int = 10
+        val _cursorIndexOfCustomerId: Int = 1
+        val _cursorIndexOfCustomerName: Int = 2
+        val _cursorIndexOfPhone: Int = 3
+        val _cursorIndexOfItemName: Int = 4
+        val _cursorIndexOfItemWeight: Int = 5
+        val _cursorIndexOfPromiseDate: Int = 6
+        val _cursorIndexOfTotalAmount: Int = 7
+        val _cursorIndexOfPaidAmount: Int = 8
+        val _cursorIndexOfRemainingAmount: Int = 9
+        val _cursorIndexOfStatus: Int = 10
+        val _cursorIndexOfCreatedAt: Int = 11
         val _result: MutableList<TransactionWithCustomer> = mutableListOf()
         while (_stmt.step()) {
           val _item: TransactionWithCustomer
           val _tmpTransactionId: Long
           _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
           val _tmpCustomerName: String
           _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
           val _tmpPhone: String
@@ -206,7 +216,7 @@ public class TransactionDao_Impl(
           val _tmpCreatedAt: Long
           _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
           _item =
-              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
+              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
           _result.add(_item)
         }
         _result
@@ -220,6 +230,7 @@ public class TransactionDao_Impl(
     val _sql: String = """
         |
         |        SELECT t.id           AS transactionId,
+        |               t.customer_id  AS customerId,
         |               c.name         AS customerName,
         |               c.phone        AS phone,
         |               t.item_name    AS itemName,
@@ -242,20 +253,23 @@ public class TransactionDao_Impl(
         var _argIndex: Int = 1
         _stmt.bindLong(_argIndex, id)
         val _cursorIndexOfTransactionId: Int = 0
-        val _cursorIndexOfCustomerName: Int = 1
-        val _cursorIndexOfPhone: Int = 2
-        val _cursorIndexOfItemName: Int = 3
-        val _cursorIndexOfItemWeight: Int = 4
-        val _cursorIndexOfPromiseDate: Int = 5
-        val _cursorIndexOfTotalAmount: Int = 6
-        val _cursorIndexOfPaidAmount: Int = 7
-        val _cursorIndexOfRemainingAmount: Int = 8
-        val _cursorIndexOfStatus: Int = 9
-        val _cursorIndexOfCreatedAt: Int = 10
+        val _cursorIndexOfCustomerId: Int = 1
+        val _cursorIndexOfCustomerName: Int = 2
+        val _cursorIndexOfPhone: Int = 3
+        val _cursorIndexOfItemName: Int = 4
+        val _cursorIndexOfItemWeight: Int = 5
+        val _cursorIndexOfPromiseDate: Int = 6
+        val _cursorIndexOfTotalAmount: Int = 7
+        val _cursorIndexOfPaidAmount: Int = 8
+        val _cursorIndexOfRemainingAmount: Int = 9
+        val _cursorIndexOfStatus: Int = 10
+        val _cursorIndexOfCreatedAt: Int = 11
         val _result: TransactionWithCustomer?
         if (_stmt.step()) {
           val _tmpTransactionId: Long
           _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
           val _tmpCustomerName: String
           _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
           val _tmpPhone: String
@@ -281,7 +295,7 @@ public class TransactionDao_Impl(
           val _tmpCreatedAt: Long
           _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
           _result =
-              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
+              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
         } else {
           _result = null
         }
@@ -292,15 +306,24 @@ public class TransactionDao_Impl(
     }
   }
 
-  public override fun getRecentCustomers(): LiveData<List<CustomerWithTotals>> {
+  public override fun getRecentCustomers(startOfToday: Long): LiveData<List<CustomerWithTotals>> {
     val _sql: String = """
         |
         |        SELECT c.id AS customerId,
         |               c.name AS customerName,
         |               c.phone AS phone,
-        |               SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END) AS totalPending,
-        |               SUM(t.paid_amount) AS totalPaid,
-        |               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+        |               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+        |               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+        |               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+        |               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+        |               CASE
+        |                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+        |                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END) = 0
+        |                    AND SUM(t.total_amount) >= 50000
+        |                   THEN 1 ELSE 0
+        |               END AS isLoyalCustomer
         |        FROM customers c
         |        LEFT JOIN transactions t ON c.id = t.customer_id
         |        GROUP BY c.id
@@ -312,12 +335,20 @@ public class TransactionDao_Impl(
         _connection ->
       val _stmt: SQLiteStatement = _connection.prepare(_sql)
       try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, startOfToday)
+        _argIndex = 2
+        _stmt.bindLong(_argIndex, startOfToday)
         val _cursorIndexOfCustomerId: Int = 0
         val _cursorIndexOfCustomerName: Int = 1
         val _cursorIndexOfPhone: Int = 2
         val _cursorIndexOfTotalPending: Int = 3
         val _cursorIndexOfTotalPaid: Int = 4
         val _cursorIndexOfNextPromiseDate: Int = 5
+        val _cursorIndexOfCompletedPayments: Int = 6
+        val _cursorIndexOfOverduePendingCount: Int = 7
+        val _cursorIndexOfTotalTransactionValue: Int = 8
+        val _cursorIndexOfIsLoyalCustomer: Int = 9
         val _result: MutableList<CustomerWithTotals> = mutableListOf()
         while (_stmt.step()) {
           val _item: CustomerWithTotals
@@ -337,8 +368,18 @@ public class TransactionDao_Impl(
           } else {
             _tmpNextPromiseDate = _stmt.getLong(_cursorIndexOfNextPromiseDate)
           }
+          val _tmpCompletedPayments: Int
+          _tmpCompletedPayments = _stmt.getLong(_cursorIndexOfCompletedPayments).toInt()
+          val _tmpOverduePendingCount: Int
+          _tmpOverduePendingCount = _stmt.getLong(_cursorIndexOfOverduePendingCount).toInt()
+          val _tmpTotalTransactionValue: Double
+          _tmpTotalTransactionValue = _stmt.getDouble(_cursorIndexOfTotalTransactionValue)
+          val _tmpIsLoyalCustomer: Boolean
+          val _tmp: Int
+          _tmp = _stmt.getLong(_cursorIndexOfIsLoyalCustomer).toInt()
+          _tmpIsLoyalCustomer = _tmp != 0
           _item =
-              CustomerWithTotals(_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpTotalPending,_tmpTotalPaid,_tmpNextPromiseDate)
+              CustomerWithTotals(_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpTotalPending,_tmpTotalPaid,_tmpNextPromiseDate,_tmpCompletedPayments,_tmpOverduePendingCount,_tmpTotalTransactionValue,_tmpIsLoyalCustomer)
           _result.add(_item)
         }
         _result
@@ -348,15 +389,25 @@ public class TransactionDao_Impl(
     }
   }
 
-  public override fun searchCustomers(query: String): LiveData<List<CustomerWithTotals>> {
+  public override fun searchCustomers(query: String, startOfToday: Long):
+      LiveData<List<CustomerWithTotals>> {
     val _sql: String = """
         |
         |        SELECT c.id AS customerId,
         |               c.name AS customerName,
         |               c.phone AS phone,
-        |               SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END) AS totalPending,
-        |               SUM(t.paid_amount) AS totalPaid,
-        |               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+        |               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+        |               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+        |               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+        |               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+        |               CASE
+        |                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+        |                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END) = 0
+        |                    AND SUM(t.total_amount) >= 50000
+        |                   THEN 1 ELSE 0
+        |               END AS isLoyalCustomer
         |        FROM customers c
         |        LEFT JOIN transactions t ON c.id = t.customer_id
         |        WHERE c.name LIKE '%' || ? || '%' OR c.phone LIKE '%' || ? || '%'
@@ -369,8 +420,12 @@ public class TransactionDao_Impl(
       val _stmt: SQLiteStatement = _connection.prepare(_sql)
       try {
         var _argIndex: Int = 1
-        _stmt.bindText(_argIndex, query)
+        _stmt.bindLong(_argIndex, startOfToday)
         _argIndex = 2
+        _stmt.bindLong(_argIndex, startOfToday)
+        _argIndex = 3
+        _stmt.bindText(_argIndex, query)
+        _argIndex = 4
         _stmt.bindText(_argIndex, query)
         val _cursorIndexOfCustomerId: Int = 0
         val _cursorIndexOfCustomerName: Int = 1
@@ -378,6 +433,10 @@ public class TransactionDao_Impl(
         val _cursorIndexOfTotalPending: Int = 3
         val _cursorIndexOfTotalPaid: Int = 4
         val _cursorIndexOfNextPromiseDate: Int = 5
+        val _cursorIndexOfCompletedPayments: Int = 6
+        val _cursorIndexOfOverduePendingCount: Int = 7
+        val _cursorIndexOfTotalTransactionValue: Int = 8
+        val _cursorIndexOfIsLoyalCustomer: Int = 9
         val _result: MutableList<CustomerWithTotals> = mutableListOf()
         while (_stmt.step()) {
           val _item: CustomerWithTotals
@@ -397,8 +456,18 @@ public class TransactionDao_Impl(
           } else {
             _tmpNextPromiseDate = _stmt.getLong(_cursorIndexOfNextPromiseDate)
           }
+          val _tmpCompletedPayments: Int
+          _tmpCompletedPayments = _stmt.getLong(_cursorIndexOfCompletedPayments).toInt()
+          val _tmpOverduePendingCount: Int
+          _tmpOverduePendingCount = _stmt.getLong(_cursorIndexOfOverduePendingCount).toInt()
+          val _tmpTotalTransactionValue: Double
+          _tmpTotalTransactionValue = _stmt.getDouble(_cursorIndexOfTotalTransactionValue)
+          val _tmpIsLoyalCustomer: Boolean
+          val _tmp: Int
+          _tmp = _stmt.getLong(_cursorIndexOfIsLoyalCustomer).toInt()
+          _tmpIsLoyalCustomer = _tmp != 0
           _item =
-              CustomerWithTotals(_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpTotalPending,_tmpTotalPaid,_tmpNextPromiseDate)
+              CustomerWithTotals(_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpTotalPending,_tmpTotalPaid,_tmpNextPromiseDate,_tmpCompletedPayments,_tmpOverduePendingCount,_tmpTotalTransactionValue,_tmpIsLoyalCustomer)
           _result.add(_item)
         }
         _result
@@ -413,6 +482,7 @@ public class TransactionDao_Impl(
     val _sql: String = """
         |
         |        SELECT t.id           AS transactionId,
+        |               t.customer_id  AS customerId,
         |               c.name         AS customerName,
         |               c.phone        AS phone,
         |               t.item_name    AS itemName,
@@ -436,21 +506,24 @@ public class TransactionDao_Impl(
         var _argIndex: Int = 1
         _stmt.bindLong(_argIndex, customerId)
         val _cursorIndexOfTransactionId: Int = 0
-        val _cursorIndexOfCustomerName: Int = 1
-        val _cursorIndexOfPhone: Int = 2
-        val _cursorIndexOfItemName: Int = 3
-        val _cursorIndexOfItemWeight: Int = 4
-        val _cursorIndexOfPromiseDate: Int = 5
-        val _cursorIndexOfTotalAmount: Int = 6
-        val _cursorIndexOfPaidAmount: Int = 7
-        val _cursorIndexOfRemainingAmount: Int = 8
-        val _cursorIndexOfStatus: Int = 9
-        val _cursorIndexOfCreatedAt: Int = 10
+        val _cursorIndexOfCustomerId: Int = 1
+        val _cursorIndexOfCustomerName: Int = 2
+        val _cursorIndexOfPhone: Int = 3
+        val _cursorIndexOfItemName: Int = 4
+        val _cursorIndexOfItemWeight: Int = 5
+        val _cursorIndexOfPromiseDate: Int = 6
+        val _cursorIndexOfTotalAmount: Int = 7
+        val _cursorIndexOfPaidAmount: Int = 8
+        val _cursorIndexOfRemainingAmount: Int = 9
+        val _cursorIndexOfStatus: Int = 10
+        val _cursorIndexOfCreatedAt: Int = 11
         val _result: MutableList<TransactionWithCustomer> = mutableListOf()
         while (_stmt.step()) {
           val _item: TransactionWithCustomer
           val _tmpTransactionId: Long
           _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
           val _tmpCustomerName: String
           _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
           val _tmpPhone: String
@@ -476,7 +549,7 @@ public class TransactionDao_Impl(
           val _tmpCreatedAt: Long
           _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
           _item =
-              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
+              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
           _result.add(_item)
         }
         _result
@@ -582,6 +655,144 @@ public class TransactionDao_Impl(
               ReminderPayload(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpPendingAmount)
         } else {
           _result = null
+        }
+        _result
+      } finally {
+        _stmt.close()
+      }
+    }
+  }
+
+  public override suspend fun getLoyaltyStatus(customerId: Long, startOfToday: Long):
+      LoyaltyStatus {
+    val _sql: String = """
+        |
+        |        SELECT COALESCE(SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+        |               COALESCE(SUM(CASE WHEN status = 'PENDING' AND promise_date IS NOT NULL AND promise_date < ? THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+        |               COALESCE(SUM(total_amount), 0.0) AS totalTransactionValue,
+        |               CASE
+        |                   WHEN SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+        |                    AND SUM(CASE WHEN status = 'PENDING' AND promise_date IS NOT NULL AND promise_date < ? THEN 1 ELSE 0 END) = 0
+        |                    AND SUM(total_amount) >= 50000
+        |                   THEN 1 ELSE 0
+        |               END AS isLoyalCustomer
+        |        FROM transactions
+        |        WHERE customer_id = ?
+        |    
+        """.trimMargin()
+    return performSuspending(__db, true, false) { _connection ->
+      val _stmt: SQLiteStatement = _connection.prepare(_sql)
+      try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, startOfToday)
+        _argIndex = 2
+        _stmt.bindLong(_argIndex, startOfToday)
+        _argIndex = 3
+        _stmt.bindLong(_argIndex, customerId)
+        val _cursorIndexOfCompletedPayments: Int = 0
+        val _cursorIndexOfOverduePendingCount: Int = 1
+        val _cursorIndexOfTotalTransactionValue: Int = 2
+        val _cursorIndexOfIsLoyalCustomer: Int = 3
+        val _result: LoyaltyStatus
+        if (_stmt.step()) {
+          val _tmpCompletedPayments: Int
+          _tmpCompletedPayments = _stmt.getLong(_cursorIndexOfCompletedPayments).toInt()
+          val _tmpOverduePendingCount: Int
+          _tmpOverduePendingCount = _stmt.getLong(_cursorIndexOfOverduePendingCount).toInt()
+          val _tmpTotalTransactionValue: Double
+          _tmpTotalTransactionValue = _stmt.getDouble(_cursorIndexOfTotalTransactionValue)
+          val _tmpIsLoyalCustomer: Boolean
+          val _tmp: Int
+          _tmp = _stmt.getLong(_cursorIndexOfIsLoyalCustomer).toInt()
+          _tmpIsLoyalCustomer = _tmp != 0
+          _result =
+              LoyaltyStatus(_tmpCompletedPayments,_tmpOverduePendingCount,_tmpTotalTransactionValue,_tmpIsLoyalCustomer)
+        } else {
+          error("The query result was empty, but expected a single row to return a NON-NULL object of type <com.kanhaiyajewellers.creditmanager.`data`.model.LoyaltyStatus>.")
+        }
+        _result
+      } finally {
+        _stmt.close()
+      }
+    }
+  }
+
+  public override fun getTopLoyalCustomers(startOfToday: Long): LiveData<List<CustomerWithTotals>> {
+    val _sql: String = """
+        |
+        |        SELECT c.id AS customerId,
+        |               c.name AS customerName,
+        |               c.phone AS phone,
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+        |               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+        |               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+        |               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+        |               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+        |               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+        |               CASE
+        |                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+        |                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < ? THEN 1 ELSE 0 END) = 0
+        |                    AND SUM(t.total_amount) >= 50000
+        |                   THEN 1 ELSE 0
+        |               END AS isLoyalCustomer
+        |        FROM customers c
+        |        INNER JOIN transactions t ON c.id = t.customer_id
+        |        GROUP BY c.id
+        |        HAVING isLoyalCustomer = 1
+        |        ORDER BY totalTransactionValue DESC
+        |        LIMIT 5
+        |    
+        """.trimMargin()
+    return __db.invalidationTracker.createLiveData(arrayOf("customers", "transactions"), false) {
+        _connection ->
+      val _stmt: SQLiteStatement = _connection.prepare(_sql)
+      try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, startOfToday)
+        _argIndex = 2
+        _stmt.bindLong(_argIndex, startOfToday)
+        val _cursorIndexOfCustomerId: Int = 0
+        val _cursorIndexOfCustomerName: Int = 1
+        val _cursorIndexOfPhone: Int = 2
+        val _cursorIndexOfTotalPending: Int = 3
+        val _cursorIndexOfTotalPaid: Int = 4
+        val _cursorIndexOfNextPromiseDate: Int = 5
+        val _cursorIndexOfCompletedPayments: Int = 6
+        val _cursorIndexOfOverduePendingCount: Int = 7
+        val _cursorIndexOfTotalTransactionValue: Int = 8
+        val _cursorIndexOfIsLoyalCustomer: Int = 9
+        val _result: MutableList<CustomerWithTotals> = mutableListOf()
+        while (_stmt.step()) {
+          val _item: CustomerWithTotals
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
+          val _tmpCustomerName: String
+          _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
+          val _tmpPhone: String
+          _tmpPhone = _stmt.getText(_cursorIndexOfPhone)
+          val _tmpTotalPending: Double
+          _tmpTotalPending = _stmt.getDouble(_cursorIndexOfTotalPending)
+          val _tmpTotalPaid: Double
+          _tmpTotalPaid = _stmt.getDouble(_cursorIndexOfTotalPaid)
+          val _tmpNextPromiseDate: Long?
+          if (_stmt.isNull(_cursorIndexOfNextPromiseDate)) {
+            _tmpNextPromiseDate = null
+          } else {
+            _tmpNextPromiseDate = _stmt.getLong(_cursorIndexOfNextPromiseDate)
+          }
+          val _tmpCompletedPayments: Int
+          _tmpCompletedPayments = _stmt.getLong(_cursorIndexOfCompletedPayments).toInt()
+          val _tmpOverduePendingCount: Int
+          _tmpOverduePendingCount = _stmt.getLong(_cursorIndexOfOverduePendingCount).toInt()
+          val _tmpTotalTransactionValue: Double
+          _tmpTotalTransactionValue = _stmt.getDouble(_cursorIndexOfTotalTransactionValue)
+          val _tmpIsLoyalCustomer: Boolean
+          val _tmp: Int
+          _tmp = _stmt.getLong(_cursorIndexOfIsLoyalCustomer).toInt()
+          _tmpIsLoyalCustomer = _tmp != 0
+          _item =
+              CustomerWithTotals(_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpTotalPending,_tmpTotalPaid,_tmpNextPromiseDate,_tmpCompletedPayments,_tmpOverduePendingCount,_tmpTotalTransactionValue,_tmpIsLoyalCustomer)
+          _result.add(_item)
         }
         _result
       } finally {

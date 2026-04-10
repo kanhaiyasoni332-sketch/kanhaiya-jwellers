@@ -35,6 +35,14 @@
     <string name="upcoming_payments">Upcoming Payments</string>
     <string name="payment_completed">Payment Completed ✅</string>
     <string name="paid_badge">Paid ✅</string>
+    <string name="loyal_customer">Loyal Customer</string>
+    <string name="loyal_customer_unlocked">🎉 Loyal Customer Unlocked!</string>
+    <string name="offer_discount_suggestion">Offer 5%% discount on next purchase</string>
+    <string name="send_offer_whatsapp">Send Offer on WhatsApp</string>
+    <string name="filter_all">All</string>
+    <string name="filter_pending">Pending</string>
+    <string name="filter_loyal">Loyal</string>
+    <string name="top_loyal_customers">Top Loyal Customers</string>
 
     <!-- Search -->
     <string name="search_hint">Search by name or phone…</string>

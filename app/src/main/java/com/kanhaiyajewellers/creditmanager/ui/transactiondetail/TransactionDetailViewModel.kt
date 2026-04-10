@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 
 import com.kanhaiyajewellers.creditmanager.data.db.dao.PaymentDao
 import com.kanhaiyajewellers.creditmanager.data.db.entity.Payment
+import java.util.Calendar
 
 class TransactionDetailViewModel(
     private val transactionDao: TransactionDao,
@@ -72,11 +73,16 @@ class TransactionDetailViewModel(
                     )
                 )
 
+                val loyalty = transactionDao.getLoyaltyStatus(
+                    customerId = current.customerId,
+                    startOfToday = startOfToday()
+                )
                 onSuccess(
                     if (justCompleted) {
                         PaymentCompletionInfo(
                             customerName = current.customerName,
-                            phone = current.phone
+                            phone = current.phone,
+                            isLoyalCustomer = loyalty.isLoyalCustomer
                         )
                     } else null
                 )
@@ -84,5 +90,14 @@ class TransactionDetailViewModel(
                 onError(e.localizedMessage ?: "Unknown error")
             }
         }
+    }
+
+    private fun startOfToday(): Long {
+        return Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis
     }
 }

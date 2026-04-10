@@ -17,6 +17,7 @@ import com.kanhaiyajewellers.creditmanager.ui.common.WhatsAppHelper
 import com.kanhaiyajewellers.creditmanager.ui.ViewModelFactory
 
 class DashboardFragment : Fragment() {
+    private enum class CustomerFilter { ALL, PENDING, LOYAL }
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
@@ -27,6 +28,9 @@ class DashboardFragment : Fragment() {
 
     private lateinit var customerAdapter: CustomerAdapter
     private lateinit var upcomingPaymentAdapter: UpcomingPaymentAdapter
+    private lateinit var topLoyalAdapter: TopLoyalCustomerAdapter
+    private var allCustomers: List<CustomerWithTotals> = emptyList()
+    private var selectedFilter: CustomerFilter = CustomerFilter.ALL
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +44,7 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupCustomerFilter()
         setupMonthlyAnalysis()
         observeData()
         setupFab()
@@ -114,6 +119,24 @@ class DashboardFragment : Fragment() {
             setHasFixedSize(false)
             addItemDecoration(SpaceItemDecoration(8))
         }
+
+        topLoyalAdapter = TopLoyalCustomerAdapter { customer ->
+            val action = DashboardFragmentDirections
+                .actionDashboardFragmentToCustomerHistoryFragment(
+                    customerId = customer.customerId,
+                    customerName = customer.customerName,
+                    customerPhone = customer.phone,
+                    totalPending = customer.totalPending.toFloat(),
+                    totalPaid = customer.totalPaid.toFloat()
+                )
+            findNavController().navigate(action)
+        }
+        binding.rvTopLoyalCustomers.apply {
+            adapter = topLoyalAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(false)
+            addItemDecoration(SpaceItemDecoration(8))
+        }
     }
 
     /** Adds vertical spacing between RecyclerView items in dp. */
@@ -126,9 +149,8 @@ class DashboardFragment : Fragment() {
 
     private fun observeData() {
         viewModel.recentCustomers.observe(viewLifecycleOwner) { list ->
-            customerAdapter.submitList(list)
-            binding.tvEmptyState.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
-            binding.rvTransactions.visibility = if (list.isEmpty()) View.GONE else View.VISIBLE
+            allCustomers = list
+            applyCustomerFilter()
         }
 
         viewModel.totalPendingAmount.observe(viewLifecycleOwner) { amount ->
@@ -149,6 +171,13 @@ class DashboardFragment : Fragment() {
             binding.tvUpcomingPaymentsLabel.visibility = if (visible) View.VISIBLE else View.GONE
             binding.rvUpcomingPayments.visibility = if (visible) View.VISIBLE else View.GONE
         }
+
+        viewModel.topLoyalCustomers.observe(viewLifecycleOwner) { list ->
+            topLoyalAdapter.submitList(list)
+            val visible = list.isNotEmpty()
+            binding.tvTopLoyalLabel.visibility = if (visible) View.VISIBLE else View.GONE
+            binding.rvTopLoyalCustomers.visibility = if (visible) View.VISIBLE else View.GONE
+        }
     }
 
     private fun setupFab() {
@@ -167,5 +196,44 @@ class DashboardFragment : Fragment() {
         val message = "Dear ${customer.customerName} ji, you have cleared all your dues. " +
             "Thank you for your trust. Visit again for more shopping 🙂 - Kanhaiya Jewellers"
         WhatsAppHelper.openWhatsAppMessage(requireContext(), customer.phone, message)
+    }
+
+    private fun setupCustomerFilter() {
+        val defaultColor = androidx.core.content.ContextCompat.getColor(requireContext(), com.kanhaiyajewellers.creditmanager.R.color.text_secondary)
+        val activeColor = androidx.core.content.ContextCompat.getColor(requireContext(), com.kanhaiyajewellers.creditmanager.R.color.gold_primary)
+
+        fun updateFilterUi() {
+            binding.tvFilterAllCustomers.setTextColor(if (selectedFilter == CustomerFilter.ALL) activeColor else defaultColor)
+            binding.tvFilterPendingCustomers.setTextColor(if (selectedFilter == CustomerFilter.PENDING) activeColor else defaultColor)
+            binding.tvFilterLoyalCustomers.setTextColor(if (selectedFilter == CustomerFilter.LOYAL) activeColor else defaultColor)
+        }
+
+        binding.tvFilterAllCustomers.setOnClickListener {
+            selectedFilter = CustomerFilter.ALL
+            updateFilterUi()
+            applyCustomerFilter()
+        }
+        binding.tvFilterPendingCustomers.setOnClickListener {
+            selectedFilter = CustomerFilter.PENDING
+            updateFilterUi()
+            applyCustomerFilter()
+        }
+        binding.tvFilterLoyalCustomers.setOnClickListener {
+            selectedFilter = CustomerFilter.LOYAL
+            updateFilterUi()
+            applyCustomerFilter()
+        }
+        updateFilterUi()
+    }
+
+    private fun applyCustomerFilter() {
+        val filtered = when (selectedFilter) {
+            CustomerFilter.ALL -> allCustomers
+            CustomerFilter.PENDING -> allCustomers.filter { it.totalPending > 0.0 }
+            CustomerFilter.LOYAL -> allCustomers.filter { it.isLoyalCustomer }
+        }
+        customerAdapter.submitList(filtered)
+        binding.tvEmptyState.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
+        binding.rvTransactions.visibility = if (filtered.isEmpty()) View.GONE else View.VISIBLE
     }
 }

@@ -3574,6 +3574,7 @@ id row_index_key
 id rtl
 id rvPayments
 id rvSearchResults
+id rvTopLoyalCustomers
 id rvTransactions
 id rvUpcomingPayments
 id save_non_transition_alpha
@@ -3707,12 +3708,17 @@ id tvDate
 id tvDueStatus
 id tvDueTodayBadge
 id tvEmptyState
+id tvFilterAllCustomers
+id tvFilterLoyalCustomers
 id tvFilterMonth
+id tvFilterPendingCustomers
 id tvFilterQuarter
 id tvFilterWeek
 id tvInsight
 id tvItemName
 id tvItemWeight
+id tvLoyalBadge
+id tvMeta
 id tvName
 id tvNoResults
 id tvPaidAmount
@@ -3727,9 +3733,11 @@ id tvRemainingAmount
 id tvRemainingValue
 id tvStatus
 id tvSubtitle
+id tvTopLoyalLabel
 id tvTotalAmount
 id tvTotalPaid
 id tvTotalPending
+id tvTotalValue
 id tvUpcomingPaymentsLabel
 id unchecked
 id uniform
@@ -3898,6 +3906,7 @@ layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_customer
 layout item_payment
+layout item_top_loyal_customer
 layout item_transaction
 layout item_upcoming_payment
 layout m3_alert_dialog
@@ -4028,11 +4037,16 @@ string error_required
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string filter_all
+string filter_loyal
+string filter_pending
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_name
 string item_view_role_description
 string item_weight
+string loyal_customer
+string loyal_customer_unlocked
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4137,6 +4151,7 @@ string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string no_results
 string no_transactions
+string offer_discount_suggestion
 string paid_amount
 string paid_badge
 string password_toggle_content_description
@@ -4158,6 +4173,7 @@ string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
 string searchview_navigation_content_description
 string select_date
+string send_offer_whatsapp
 string send_thank_you_message
 string send_whatsapp_reminder
 string side_sheet_accessibility_pane_title
@@ -4165,6 +4181,7 @@ string side_sheet_behavior
 string status_bar_notification_info_overflow
 string status_completed
 string status_pending
+string top_loyal_customers
 string total_amount
 string total_pending_amount
 string transaction_detail

@@ -67,7 +67,8 @@ class AddPaymentBottomSheet : BottomSheetDialogFragment() {
                     }
                     showCompletionDialog(
                         customerName = completionInfo.customerName,
-                        phone = completionInfo.phone
+                        phone = completionInfo.phone,
+                        isLoyalCustomer = completionInfo.isLoyalCustomer
                     )
                 },
                 onError = { msg ->
@@ -78,10 +79,18 @@ class AddPaymentBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    private fun showCompletionDialog(customerName: String, phone: String) {
-        val message = "$customerName has cleared all dues"
+    private fun showCompletionDialog(customerName: String, phone: String, isLoyalCustomer: Boolean) {
+        val message = if (isLoyalCustomer) {
+            "$customerName has cleared all dues\n\n${getString(R.string.loyal_customer_unlocked)}\n${getString(R.string.offer_discount_suggestion)}"
+        } else {
+            "$customerName has cleared all dues"
+        }
         val thankYouText = "Dear $customerName ji, you have cleared all your dues. " +
             "Thank you for your trust. Visit again for more shopping 🙂 - Kanhaiya Jewellers"
+        val offerText = "Dear $customerName ji, thank you for clearing all dues on time 🙏 " +
+            "As a valued customer, we are offering you a special discount on your next purchase. " +
+            "Visit again at Kanhaiya Jewellers 💎"
+        val ctaText = if (isLoyalCustomer) getString(R.string.send_offer_whatsapp) else getString(R.string.send_thank_you_message)
 
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.payment_completed))
@@ -90,14 +99,15 @@ class AddPaymentBottomSheet : BottomSheetDialogFragment() {
                 d.dismiss()
                 dismiss()
             }
-            .setPositiveButton(getString(R.string.send_thank_you_message), null)
+            .setPositiveButton(ctaText, null)
             .create()
 
         dialog.setOnShowListener {
             val positive = dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
             positive.isEnabled = phone.isNotBlank()
             positive.setOnClickListener {
-                WhatsAppHelper.openWhatsAppMessage(requireContext(), phone, thankYouText)
+                val selectedMessage = if (isLoyalCustomer) offerText else thankYouText
+                WhatsAppHelper.openWhatsAppMessage(requireContext(), phone, selectedMessage)
                 dialog.dismiss()
                 dismiss()
             }

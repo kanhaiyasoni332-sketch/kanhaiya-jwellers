@@ -332,6 +332,63 @@
                 android:textAllCaps="true"
                 android:layout_marginBottom="10dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvFilterAllCustomers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_all"
+                    android:textColor="@color/gold_primary"
+                    android:textStyle="bold"
+                    android:paddingEnd="16dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvFilterPendingCustomers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_pending"
+                    android:textColor="@color/text_secondary"
+                    android:textStyle="bold"
+                    android:paddingEnd="16dp"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvFilterLoyalCustomers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/filter_loyal"
+                    android:textColor="@color/text_secondary"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTopLoyalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/top_loyal_customers"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:letterSpacing="0.08"
+                android:textAllCaps="true"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTopLoyalCustomers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/tvUpcomingPaymentsLabel"
                 android:layout_width="wrap_content"

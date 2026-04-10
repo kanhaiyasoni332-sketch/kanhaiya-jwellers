@@ -51,6 +51,22 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="11sp"
                 android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tvLoyalBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="@string/loyal_customer"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@drawable/bg_gold_button"
+                android:visibility="gone" />
         </LinearLayout>
 
         <!-- Right side: Amounts -->

@@ -75,10 +75,22 @@ class CustomerAdapter(
             binding.tvPaidBadge.visibility = if (isPaid) android.view.View.VISIBLE else android.view.View.GONE
             binding.btnWhatsAppThankYou.visibility = if (canSendThanks) android.view.View.VISIBLE else android.view.View.GONE
             binding.btnWhatsAppThankYou.setOnClickListener { onThankYouClick(customer) }
+            if (customer.isLoyalCustomer) {
+                if (binding.tvLoyalBadge.visibility != android.view.View.VISIBLE) {
+                    binding.tvLoyalBadge.alpha = 0f
+                    binding.tvLoyalBadge.visibility = android.view.View.VISIBLE
+                    binding.tvLoyalBadge.animate().alpha(1f).setDuration(240).start()
+                } else {
+                    binding.tvLoyalBadge.visibility = android.view.View.VISIBLE
+                }
+            } else {
+                binding.tvLoyalBadge.visibility = android.view.View.GONE
+            }
 
             if (dayDiff == null) {
                 binding.tvDueStatus.visibility = android.view.View.GONE
-                binding.tvCustomerName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.text_primary))
+                val baseColor = if (customer.isLoyalCustomer) R.color.gold_primary else R.color.text_primary
+                binding.tvCustomerName.setTextColor(ContextCompat.getColor(binding.root.context, baseColor))
             } else {
                 binding.tvDueStatus.visibility = android.view.View.VISIBLE
                 binding.tvDueStatus.text = when {
@@ -88,7 +100,11 @@ class CustomerAdapter(
                 }
                 val dueColor = if (isOverdue) R.color.status_pending else R.color.text_secondary
                 binding.tvDueStatus.setTextColor(ContextCompat.getColor(binding.root.context, dueColor))
-                val nameColor = if (isOverdue) R.color.status_pending else R.color.text_primary
+                val nameColor = when {
+                    isOverdue -> R.color.status_pending
+                    customer.isLoyalCustomer -> R.color.gold_primary
+                    else -> R.color.text_primary
+                }
                 binding.tvCustomerName.setTextColor(ContextCompat.getColor(binding.root.context, nameColor))
             }
         }

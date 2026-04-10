@@ -8,16 +8,16 @@
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/drawable/bg_status_pending.xml"
     },
     {
-        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_item_customer.xml.flat",
-        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_customer.xml"
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_fragment_customer_history.xml.flat",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_customer_history.xml"
     },
     {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/drawable_ic_home.xml.flat",
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/drawable/ic_home.xml"
     },
     {
-        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_fragment_customer_history.xml.flat",
-        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_customer_history.xml"
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_item_customer.xml.flat",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_customer.xml"
     },
     {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/anim_slide_in_left.xml.flat",
@@ -56,8 +56,16 @@
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_dashboard.xml"
     },
     {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_item_top_loyal_customer.xml.flat",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_top_loyal_customer.xml"
+    },
+    {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_item_payment.xml.flat",
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_payment.xml"
+    },
+    {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_fragment_dashboard.xml.flat",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_dashboard.xml"
     },
     {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_fragment_add_transaction.xml.flat",
@@ -78,10 +86,6 @@
     {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-debug-51:/drawable_bg_status_completed.xml.flat",
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/drawable/bg_status_completed.xml"
-    },
-    {
-        "merged": "com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_fragment_transaction_detail.xml.flat",
-        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_transaction_detail.xml"
     },
     {
         "merged": "com.kanhaiyajewellers.creditmanager.app-debug-51:/layout_item_customer.xml.flat",

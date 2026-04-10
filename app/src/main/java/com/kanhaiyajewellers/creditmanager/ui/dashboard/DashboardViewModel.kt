@@ -7,7 +7,7 @@ import java.util.Calendar
 class DashboardViewModel(private val transactionDao: TransactionDao) : ViewModel() {
 
     /** Recent 50 customers joined with transaction stats. */
-    val recentCustomers = transactionDao.getRecentCustomers()
+    val recentCustomers = transactionDao.getRecentCustomers(startOfToday())
 
     /** Sum of remaining_amount for all PENDING transactions. */
     val totalPendingAmount = transactionDao.getTotalPendingAmount()
@@ -20,6 +20,7 @@ class DashboardViewModel(private val transactionDao: TransactionDao) : ViewModel
 
     /** Upcoming promise-date payments from today onward. */
     val upcomingPayments = transactionDao.getUpcomingPayments(startOfToday())
+    val topLoyalCustomers = transactionDao.getTopLoyalCustomers(startOfToday())
 
     private fun startOfToday(): Long {
         return Calendar.getInstance().apply {

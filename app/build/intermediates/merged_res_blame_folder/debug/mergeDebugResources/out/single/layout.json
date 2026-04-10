@@ -1,11 +1,15 @@
 [
     {
-        "merged": "com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_transaction_detail.xml",
-        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_transaction_detail.xml"
-    },
-    {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/activity_main.xml",
         "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_dashboard.xml",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_top_loyal_customer.xml",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_top_loyal_customer.xml"
     },
     {
         "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/dialog_add_payment.xml",

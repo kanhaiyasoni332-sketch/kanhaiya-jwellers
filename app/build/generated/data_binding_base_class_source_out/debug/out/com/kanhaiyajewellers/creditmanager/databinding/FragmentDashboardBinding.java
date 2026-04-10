@@ -29,6 +29,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final MinimalLineChartView lineChartView;
 
   @NonNull
+  public final RecyclerView rvTopLoyalCustomers;
+
+  @NonNull
   public final RecyclerView rvTransactions;
 
   @NonNull
@@ -41,7 +44,16 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextView tvEmptyState;
 
   @NonNull
+  public final TextView tvFilterAllCustomers;
+
+  @NonNull
+  public final TextView tvFilterLoyalCustomers;
+
+  @NonNull
   public final TextView tvFilterMonth;
+
+  @NonNull
+  public final TextView tvFilterPendingCustomers;
 
   @NonNull
   public final TextView tvFilterQuarter;
@@ -59,29 +71,39 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextView tvPendingCount;
 
   @NonNull
+  public final TextView tvTopLoyalLabel;
+
+  @NonNull
   public final TextView tvUpcomingPaymentsLabel;
 
   private FragmentDashboardBinding(@NonNull CoordinatorLayout rootView,
       @NonNull FloatingActionButton fab, @NonNull MinimalLineChartView lineChartView,
-      @NonNull RecyclerView rvTransactions, @NonNull RecyclerView rvUpcomingPayments,
-      @NonNull TextView tvCompletedCount, @NonNull TextView tvEmptyState,
-      @NonNull TextView tvFilterMonth, @NonNull TextView tvFilterQuarter,
+      @NonNull RecyclerView rvTopLoyalCustomers, @NonNull RecyclerView rvTransactions,
+      @NonNull RecyclerView rvUpcomingPayments, @NonNull TextView tvCompletedCount,
+      @NonNull TextView tvEmptyState, @NonNull TextView tvFilterAllCustomers,
+      @NonNull TextView tvFilterLoyalCustomers, @NonNull TextView tvFilterMonth,
+      @NonNull TextView tvFilterPendingCustomers, @NonNull TextView tvFilterQuarter,
       @NonNull TextView tvFilterWeek, @NonNull TextView tvInsight,
       @NonNull TextView tvPendingAmount, @NonNull TextView tvPendingCount,
-      @NonNull TextView tvUpcomingPaymentsLabel) {
+      @NonNull TextView tvTopLoyalLabel, @NonNull TextView tvUpcomingPaymentsLabel) {
     this.rootView = rootView;
     this.fab = fab;
     this.lineChartView = lineChartView;
+    this.rvTopLoyalCustomers = rvTopLoyalCustomers;
     this.rvTransactions = rvTransactions;
     this.rvUpcomingPayments = rvUpcomingPayments;
     this.tvCompletedCount = tvCompletedCount;
     this.tvEmptyState = tvEmptyState;
+    this.tvFilterAllCustomers = tvFilterAllCustomers;
+    this.tvFilterLoyalCustomers = tvFilterLoyalCustomers;
     this.tvFilterMonth = tvFilterMonth;
+    this.tvFilterPendingCustomers = tvFilterPendingCustomers;
     this.tvFilterQuarter = tvFilterQuarter;
     this.tvFilterWeek = tvFilterWeek;
     this.tvInsight = tvInsight;
     this.tvPendingAmount = tvPendingAmount;
     this.tvPendingCount = tvPendingCount;
+    this.tvTopLoyalLabel = tvTopLoyalLabel;
     this.tvUpcomingPaymentsLabel = tvUpcomingPaymentsLabel;
   }
 
@@ -124,6 +146,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rvTopLoyalCustomers;
+      RecyclerView rvTopLoyalCustomers = ViewBindings.findChildViewById(rootView, id);
+      if (rvTopLoyalCustomers == null) {
+        break missingId;
+      }
+
       id = R.id.rvTransactions;
       RecyclerView rvTransactions = ViewBindings.findChildViewById(rootView, id);
       if (rvTransactions == null) {
@@ -148,9 +176,27 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvFilterAllCustomers;
+      TextView tvFilterAllCustomers = ViewBindings.findChildViewById(rootView, id);
+      if (tvFilterAllCustomers == null) {
+        break missingId;
+      }
+
+      id = R.id.tvFilterLoyalCustomers;
+      TextView tvFilterLoyalCustomers = ViewBindings.findChildViewById(rootView, id);
+      if (tvFilterLoyalCustomers == null) {
+        break missingId;
+      }
+
       id = R.id.tvFilterMonth;
       TextView tvFilterMonth = ViewBindings.findChildViewById(rootView, id);
       if (tvFilterMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.tvFilterPendingCustomers;
+      TextView tvFilterPendingCustomers = ViewBindings.findChildViewById(rootView, id);
+      if (tvFilterPendingCustomers == null) {
         break missingId;
       }
 
@@ -184,6 +230,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvTopLoyalLabel;
+      TextView tvTopLoyalLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvTopLoyalLabel == null) {
+        break missingId;
+      }
+
       id = R.id.tvUpcomingPaymentsLabel;
       TextView tvUpcomingPaymentsLabel = ViewBindings.findChildViewById(rootView, id);
       if (tvUpcomingPaymentsLabel == null) {
@@ -191,9 +243,10 @@ public final class FragmentDashboardBinding implements ViewBinding {
       }
 
       return new FragmentDashboardBinding((CoordinatorLayout) rootView, fab, lineChartView,
-          rvTransactions, rvUpcomingPayments, tvCompletedCount, tvEmptyState, tvFilterMonth,
+          rvTopLoyalCustomers, rvTransactions, rvUpcomingPayments, tvCompletedCount, tvEmptyState,
+          tvFilterAllCustomers, tvFilterLoyalCustomers, tvFilterMonth, tvFilterPendingCustomers,
           tvFilterQuarter, tvFilterWeek, tvInsight, tvPendingAmount, tvPendingCount,
-          tvUpcomingPaymentsLabel);
+          tvTopLoyalLabel, tvUpcomingPaymentsLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

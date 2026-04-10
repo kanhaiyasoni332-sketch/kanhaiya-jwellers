@@ -33,6 +33,9 @@ public final class ItemCustomerBinding implements ViewBinding {
   public final TextView tvDueTodayBadge;
 
   @NonNull
+  public final TextView tvLoyalBadge;
+
+  @NonNull
   public final TextView tvPaidBadge;
 
   @NonNull
@@ -47,13 +50,14 @@ public final class ItemCustomerBinding implements ViewBinding {
   private ItemCustomerBinding(@NonNull LinearLayout rootView,
       @NonNull ImageButton btnWhatsAppThankYou, @NonNull TextView tvCustomerName,
       @NonNull TextView tvDueStatus, @NonNull TextView tvDueTodayBadge,
-      @NonNull TextView tvPaidBadge, @NonNull TextView tvPhone, @NonNull TextView tvTotalPaid,
-      @NonNull TextView tvTotalPending) {
+      @NonNull TextView tvLoyalBadge, @NonNull TextView tvPaidBadge, @NonNull TextView tvPhone,
+      @NonNull TextView tvTotalPaid, @NonNull TextView tvTotalPending) {
     this.rootView = rootView;
     this.btnWhatsAppThankYou = btnWhatsAppThankYou;
     this.tvCustomerName = tvCustomerName;
     this.tvDueStatus = tvDueStatus;
     this.tvDueTodayBadge = tvDueTodayBadge;
+    this.tvLoyalBadge = tvLoyalBadge;
     this.tvPaidBadge = tvPaidBadge;
     this.tvPhone = tvPhone;
     this.tvTotalPaid = tvTotalPaid;
@@ -111,6 +115,12 @@ public final class ItemCustomerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvLoyalBadge;
+      TextView tvLoyalBadge = ViewBindings.findChildViewById(rootView, id);
+      if (tvLoyalBadge == null) {
+        break missingId;
+      }
+
       id = R.id.tvPaidBadge;
       TextView tvPaidBadge = ViewBindings.findChildViewById(rootView, id);
       if (tvPaidBadge == null) {
@@ -136,7 +146,8 @@ public final class ItemCustomerBinding implements ViewBinding {
       }
 
       return new ItemCustomerBinding((LinearLayout) rootView, btnWhatsAppThankYou, tvCustomerName,
-          tvDueStatus, tvDueTodayBadge, tvPaidBadge, tvPhone, tvTotalPaid, tvTotalPending);
+          tvDueStatus, tvDueTodayBadge, tvLoyalBadge, tvPaidBadge, tvPhone, tvTotalPaid,
+          tvTotalPending);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

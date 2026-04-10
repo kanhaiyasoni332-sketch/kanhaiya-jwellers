@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.kanhaiyajewellers.creditmanager.data.model.CustomerWithTotals
+import com.kanhaiyajewellers.creditmanager.data.model.LoyaltyStatus
 import com.kanhaiyajewellers.creditmanager.data.db.entity.Transaction
 import com.kanhaiyajewellers.creditmanager.data.model.ReminderPayload
 import com.kanhaiyajewellers.creditmanager.data.model.TransactionWithCustomer
@@ -28,6 +30,7 @@ interface TransactionDao {
 
     @Query("""
         SELECT t.id           AS transactionId,
+               t.customer_id  AS customerId,
                c.name         AS customerName,
                c.phone        AS phone,
                t.item_name    AS itemName,
@@ -47,6 +50,7 @@ interface TransactionDao {
 
     @Query("""
         SELECT t.id           AS transactionId,
+               t.customer_id  AS customerId,
                c.name         AS customerName,
                c.phone        AS phone,
                t.item_name    AS itemName,
@@ -67,6 +71,7 @@ interface TransactionDao {
 
     @Query("""
         SELECT t.id           AS transactionId,
+               t.customer_id  AS customerId,
                c.name         AS customerName,
                c.phone        AS phone,
                t.item_name    AS itemName,
@@ -87,34 +92,53 @@ interface TransactionDao {
         SELECT c.id AS customerId,
                c.name AS customerName,
                c.phone AS phone,
-               SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END) AS totalPending,
-               SUM(t.paid_amount) AS totalPaid,
-               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+               CASE
+                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END) = 0
+                    AND SUM(t.total_amount) >= 50000
+                   THEN 1 ELSE 0
+               END AS isLoyalCustomer
         FROM customers c
         LEFT JOIN transactions t ON c.id = t.customer_id
         GROUP BY c.id
         ORDER BY MAX(t.created_at) DESC
         LIMIT 50
     """)
-    fun getRecentCustomers(): LiveData<List<com.kanhaiyajewellers.creditmanager.data.model.CustomerWithTotals>>
+    fun getRecentCustomers(startOfToday: Long): LiveData<List<CustomerWithTotals>>
 
     @Query("""
         SELECT c.id AS customerId,
                c.name AS customerName,
                c.phone AS phone,
-               SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END) AS totalPending,
-               SUM(t.paid_amount) AS totalPaid,
-               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+               CASE
+                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END) = 0
+                    AND SUM(t.total_amount) >= 50000
+                   THEN 1 ELSE 0
+               END AS isLoyalCustomer
         FROM customers c
         LEFT JOIN transactions t ON c.id = t.customer_id
         WHERE c.name LIKE '%' || :query || '%' OR c.phone LIKE '%' || :query || '%'
         GROUP BY c.id
         ORDER BY c.name ASC
     """)
-    fun searchCustomers(query: String): LiveData<List<com.kanhaiyajewellers.creditmanager.data.model.CustomerWithTotals>>
+    fun searchCustomers(query: String, startOfToday: Long): LiveData<List<CustomerWithTotals>>
 
     @Query("""
         SELECT t.id           AS transactionId,
+               t.customer_id  AS customerId,
                c.name         AS customerName,
                c.phone        AS phone,
                t.item_name    AS itemName,
@@ -161,6 +185,46 @@ interface TransactionDao {
         LIMIT 1
     """)
     suspend fun getReminderPayload(transactionId: Long): ReminderPayload?
+
+    @Query("""
+        SELECT COALESCE(SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+               COALESCE(SUM(CASE WHEN status = 'PENDING' AND promise_date IS NOT NULL AND promise_date < :startOfToday THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+               COALESCE(SUM(total_amount), 0.0) AS totalTransactionValue,
+               CASE
+                   WHEN SUM(CASE WHEN status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+                    AND SUM(CASE WHEN status = 'PENDING' AND promise_date IS NOT NULL AND promise_date < :startOfToday THEN 1 ELSE 0 END) = 0
+                    AND SUM(total_amount) >= 50000
+                   THEN 1 ELSE 0
+               END AS isLoyalCustomer
+        FROM transactions
+        WHERE customer_id = :customerId
+    """)
+    suspend fun getLoyaltyStatus(customerId: Long, startOfToday: Long): LoyaltyStatus
+
+    @Query("""
+        SELECT c.id AS customerId,
+               c.name AS customerName,
+               c.phone AS phone,
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' THEN t.remaining_amount ELSE 0 END), 0.0) AS totalPending,
+               COALESCE(SUM(t.paid_amount), 0.0) AS totalPaid,
+               MIN(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL THEN t.promise_date END) AS nextPromiseDate,
+               COALESCE(SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS completedPayments,
+               COALESCE(SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END), 0) AS overduePendingCount,
+               COALESCE(SUM(t.total_amount), 0.0) AS totalTransactionValue,
+               CASE
+                   WHEN SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) >= 3
+                    AND SUM(CASE WHEN t.status = 'PENDING' AND t.promise_date IS NOT NULL AND t.promise_date < :startOfToday THEN 1 ELSE 0 END) = 0
+                    AND SUM(t.total_amount) >= 50000
+                   THEN 1 ELSE 0
+               END AS isLoyalCustomer
+        FROM customers c
+        INNER JOIN transactions t ON c.id = t.customer_id
+        GROUP BY c.id
+        HAVING isLoyalCustomer = 1
+        ORDER BY totalTransactionValue DESC
+        LIMIT 5
+    """)
+    fun getTopLoyalCustomers(startOfToday: Long): LiveData<List<CustomerWithTotals>>
 
     // ─── Aggregate stats ───────────────────────────────────────────────────────
 

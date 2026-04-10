@@ -2055,11 +2055,16 @@
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="filter_all">All</string>
+    <string name="filter_loyal">Loyal</string>
+    <string name="filter_pending">Pending</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_name">Item Name</string>
     <string name="item_view_role_description">Tab</string>
     <string name="item_weight">Item Weight (gm)</string>
+    <string name="loyal_customer">Loyal Customer</string>
+    <string name="loyal_customer_unlocked">🎉 Loyal Customer Unlocked!</string>
     <string name="m3_exceed_max_badge_text_suffix" translatable="false"><ns2:g example="Some te" id="part of a long text">%1$s</ns2:g><ns2:g example="…" id="suffix">%2$s</ns2:g></string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular" translatable="false">sans-serif</string>
@@ -2170,6 +2175,7 @@
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="no_results">No results found</string>
     <string name="no_transactions">No transactions yet.\nTap + to add one.</string>
+    <string name="offer_discount_suggestion">Offer 5%% discount on next purchase</string>
     <string name="paid_amount">Paid Amount (₹)</string>
     <string name="paid_badge">Paid ✅</string>
     <string name="password_toggle_content_description">Show password</string>
@@ -2193,6 +2199,7 @@
     <string description="Content description for the X button to clear text [CHAR_LIMIT=NONE]" name="searchview_clear_text_content_description">Clear text</string>
     <string description="Content description for the navigation button to return to the previous screen [CHAR_LIMIT=NONE]" name="searchview_navigation_content_description">Back</string>
     <string name="select_date">Select Date</string>
+    <string name="send_offer_whatsapp">Send Offer on WhatsApp</string>
     <string name="send_thank_you_message">Send Thank You Message</string>
     <string name="send_whatsapp_reminder">Send WhatsApp Reminder</string>
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
@@ -2200,6 +2207,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="status_completed">COMPLETED</string>
     <string name="status_pending">PENDING</string>
+    <string name="top_loyal_customers">Top Loyal Customers</string>
     <string name="total_amount">Total Amount (₹)</string>
     <string name="total_pending_amount">Total Pending Amount</string>
     <string name="transaction_detail">Transaction Detail</string>
