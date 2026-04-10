@@ -3278,6 +3278,7 @@ id bounceEnd
 id bounceStart
 id btnAddPayment
 id btnConfirmPayment
+id btnExportLedger
 id btnSaveTransaction
 id btnThankYouMessage
 id btnWhatsAppThankYou
@@ -3558,6 +3559,7 @@ id pooling_container_listener_holder_tag
 id position
 id postLayout
 id pressed
+id progressExportLedger
 id progress_circular
 id progress_horizontal
 id radio
@@ -4034,6 +4036,7 @@ string error_icon_content_description
 string error_invalid_amount
 string error_phone
 string error_required
+string export_ledger_pdf
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -4045,6 +4048,8 @@ string icon_content_description
 string item_name
 string item_view_role_description
 string item_weight
+string ledger_export_success
+string ledger_exporting
 string loyal_customer
 string loyal_customer_unlocked
 string m3_exceed_max_badge_text_suffix
@@ -4149,6 +4154,7 @@ string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string no_ledger_entries
 string no_results
 string no_transactions
 string offer_discount_suggestion
@@ -4166,6 +4172,7 @@ string phone_number
 string promise_return_date
 string recent_transactions
 string remaining_amount
+string save_pdf
 string save_transaction
 string search_hint
 string search_menu_title
@@ -4176,6 +4183,7 @@ string select_date
 string send_offer_whatsapp
 string send_thank_you_message
 string send_whatsapp_reminder
+string share_whatsapp
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
@@ -5478,3 +5486,4 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+xml file_paths

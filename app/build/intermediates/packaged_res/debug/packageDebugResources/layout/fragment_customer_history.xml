@@ -111,6 +111,26 @@
         android:textAllCaps="true"
         android:layout_marginBottom="10dp" />
 
+    <Button
+        android:id="@+id/btnExportLedger"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="@string/export_ledger_pdf"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:background="@drawable/bg_gold_button"
+        android:layout_marginBottom="10dp" />
+
+    <ProgressBar
+        android:id="@+id/progressExportLedger"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp" />
+
     <!-- Transactions List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTransactions"

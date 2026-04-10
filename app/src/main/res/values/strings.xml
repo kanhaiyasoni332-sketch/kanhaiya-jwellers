@@ -43,6 +43,12 @@
     <string name="filter_pending">Pending</string>
     <string name="filter_loyal">Loyal</string>
     <string name="top_loyal_customers">Top Loyal Customers</string>
+    <string name="export_ledger_pdf">Export Ledger (PDF)</string>
+    <string name="ledger_exporting">Exporting...</string>
+    <string name="ledger_export_success">Ledger exported successfully</string>
+    <string name="share_whatsapp">Share via WhatsApp</string>
+    <string name="save_pdf">Download / Save</string>
+    <string name="no_ledger_entries">No transactions found for this customer.</string>
 
     <!-- Search -->
     <string name="search_hint">Search by name or phone…</string>

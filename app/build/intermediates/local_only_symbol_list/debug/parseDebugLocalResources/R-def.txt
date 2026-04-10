@@ -59,6 +59,7 @@ id addTransactionFragment
 id bottomNav
 id btnAddPayment
 id btnConfirmPayment
+id btnExportLedger
 id btnSaveTransaction
 id btnThankYouMessage
 id btnWhatsAppThankYou
@@ -78,6 +79,7 @@ id ivLogo
 id lineChartView
 id nav_graph
 id nav_host_fragment
+id progressExportLedger
 id rvPayments
 id rvSearchResults
 id rvTopLoyalCustomers
@@ -164,13 +166,17 @@ string due_today
 string error_invalid_amount
 string error_phone
 string error_required
+string export_ledger_pdf
 string filter_all
 string filter_loyal
 string filter_pending
 string item_name
 string item_weight
+string ledger_export_success
+string ledger_exporting
 string loyal_customer
 string loyal_customer_unlocked
+string no_ledger_entries
 string no_results
 string no_transactions
 string offer_discount_suggestion
@@ -183,12 +189,14 @@ string phone_number
 string promise_return_date
 string recent_transactions
 string remaining_amount
+string save_pdf
 string save_transaction
 string search_hint
 string select_date
 string send_offer_whatsapp
 string send_thank_you_message
 string send_whatsapp_reminder
+string share_whatsapp
 string status_completed
 string status_pending
 string top_loyal_customers
@@ -203,3 +211,4 @@ style Widget.KanhaiyaJewellers.Button.Gold
 style Widget.KanhaiyaJewellers.Button.Gold.Outline
 style Widget.KanhaiyaJewellers.TextInputLayout
 style Widget.KanhaiyaJewellers.Toolbar
+xml file_paths

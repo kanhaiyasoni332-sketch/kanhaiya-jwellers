@@ -4,7 +4,9 @@ package com.kanhaiyajewellers.creditmanager.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,12 @@ import java.lang.String;
 public final class FragmentCustomerHistoryBinding implements ViewBinding {
   @NonNull
   private final LinearLayout rootView;
+
+  @NonNull
+  public final Button btnExportLedger;
+
+  @NonNull
+  public final ProgressBar progressExportLedger;
 
   @NonNull
   public final RecyclerView rvTransactions;
@@ -36,9 +44,12 @@ public final class FragmentCustomerHistoryBinding implements ViewBinding {
   public final TextView tvTotalPending;
 
   private FragmentCustomerHistoryBinding(@NonNull LinearLayout rootView,
+      @NonNull Button btnExportLedger, @NonNull ProgressBar progressExportLedger,
       @NonNull RecyclerView rvTransactions, @NonNull TextView tvCustomerName,
       @NonNull TextView tvPhone, @NonNull TextView tvTotalPaid, @NonNull TextView tvTotalPending) {
     this.rootView = rootView;
+    this.btnExportLedger = btnExportLedger;
+    this.progressExportLedger = progressExportLedger;
     this.rvTransactions = rvTransactions;
     this.tvCustomerName = tvCustomerName;
     this.tvPhone = tvPhone;
@@ -73,6 +84,18 @@ public final class FragmentCustomerHistoryBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnExportLedger;
+      Button btnExportLedger = ViewBindings.findChildViewById(rootView, id);
+      if (btnExportLedger == null) {
+        break missingId;
+      }
+
+      id = R.id.progressExportLedger;
+      ProgressBar progressExportLedger = ViewBindings.findChildViewById(rootView, id);
+      if (progressExportLedger == null) {
+        break missingId;
+      }
+
       id = R.id.rvTransactions;
       RecyclerView rvTransactions = ViewBindings.findChildViewById(rootView, id);
       if (rvTransactions == null) {
@@ -103,8 +126,9 @@ public final class FragmentCustomerHistoryBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentCustomerHistoryBinding((LinearLayout) rootView, rvTransactions,
-          tvCustomerName, tvPhone, tvTotalPaid, tvTotalPending);
+      return new FragmentCustomerHistoryBinding((LinearLayout) rootView, btnExportLedger,
+          progressExportLedger, rvTransactions, tvCustomerName, tvPhone, tvTotalPaid,
+          tvTotalPending);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

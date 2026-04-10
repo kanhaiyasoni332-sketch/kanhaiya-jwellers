@@ -559,6 +559,87 @@ public class TransactionDao_Impl(
     }
   }
 
+  public override suspend fun getTransactionsByCustomerIdSync(customerId: Long):
+      List<TransactionWithCustomer> {
+    val _sql: String = """
+        |
+        |        SELECT t.id           AS transactionId,
+        |               t.customer_id  AS customerId,
+        |               c.name         AS customerName,
+        |               c.phone        AS phone,
+        |               t.item_name    AS itemName,
+        |               t.item_weight  AS itemWeight,
+        |               t.promise_date AS promiseDate,
+        |               t.total_amount AS totalAmount,
+        |               t.paid_amount  AS paidAmount,
+        |               t.remaining_amount AS remainingAmount,
+        |               t.status       AS status,
+        |               t.created_at   AS createdAt
+        |        FROM   transactions t
+        |        INNER JOIN customers c ON t.customer_id = c.id
+        |        WHERE  t.customer_id = ?
+        |        ORDER  BY t.created_at ASC
+        |    
+        """.trimMargin()
+    return performSuspending(__db, true, false) { _connection ->
+      val _stmt: SQLiteStatement = _connection.prepare(_sql)
+      try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, customerId)
+        val _cursorIndexOfTransactionId: Int = 0
+        val _cursorIndexOfCustomerId: Int = 1
+        val _cursorIndexOfCustomerName: Int = 2
+        val _cursorIndexOfPhone: Int = 3
+        val _cursorIndexOfItemName: Int = 4
+        val _cursorIndexOfItemWeight: Int = 5
+        val _cursorIndexOfPromiseDate: Int = 6
+        val _cursorIndexOfTotalAmount: Int = 7
+        val _cursorIndexOfPaidAmount: Int = 8
+        val _cursorIndexOfRemainingAmount: Int = 9
+        val _cursorIndexOfStatus: Int = 10
+        val _cursorIndexOfCreatedAt: Int = 11
+        val _result: MutableList<TransactionWithCustomer> = mutableListOf()
+        while (_stmt.step()) {
+          val _item: TransactionWithCustomer
+          val _tmpTransactionId: Long
+          _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpCustomerId: Long
+          _tmpCustomerId = _stmt.getLong(_cursorIndexOfCustomerId)
+          val _tmpCustomerName: String
+          _tmpCustomerName = _stmt.getText(_cursorIndexOfCustomerName)
+          val _tmpPhone: String
+          _tmpPhone = _stmt.getText(_cursorIndexOfPhone)
+          val _tmpItemName: String
+          _tmpItemName = _stmt.getText(_cursorIndexOfItemName)
+          val _tmpItemWeight: String
+          _tmpItemWeight = _stmt.getText(_cursorIndexOfItemWeight)
+          val _tmpPromiseDate: Long?
+          if (_stmt.isNull(_cursorIndexOfPromiseDate)) {
+            _tmpPromiseDate = null
+          } else {
+            _tmpPromiseDate = _stmt.getLong(_cursorIndexOfPromiseDate)
+          }
+          val _tmpTotalAmount: Double
+          _tmpTotalAmount = _stmt.getDouble(_cursorIndexOfTotalAmount)
+          val _tmpPaidAmount: Double
+          _tmpPaidAmount = _stmt.getDouble(_cursorIndexOfPaidAmount)
+          val _tmpRemainingAmount: Double
+          _tmpRemainingAmount = _stmt.getDouble(_cursorIndexOfRemainingAmount)
+          val _tmpStatus: String
+          _tmpStatus = _stmt.getText(_cursorIndexOfStatus)
+          val _tmpCreatedAt: Long
+          _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
+          _item =
+              TransactionWithCustomer(_tmpTransactionId,_tmpCustomerId,_tmpCustomerName,_tmpPhone,_tmpItemName,_tmpItemWeight,_tmpPromiseDate,_tmpTotalAmount,_tmpPaidAmount,_tmpRemainingAmount,_tmpStatus,_tmpCreatedAt)
+          _result.add(_item)
+        }
+        _result
+      } finally {
+        _stmt.close()
+      }
+    }
+  }
+
   public override fun getUpcomingPayments(startOfToday: Long): LiveData<List<UpcomingPaymentItem>> {
     val _sql: String = """
         |

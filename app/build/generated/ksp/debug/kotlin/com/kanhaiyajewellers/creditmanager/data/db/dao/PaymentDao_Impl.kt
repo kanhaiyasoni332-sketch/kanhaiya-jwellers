@@ -7,6 +7,7 @@ import androidx.room.util.getColumnIndexOrThrow
 import androidx.room.util.performSuspending
 import androidx.sqlite.SQLiteStatement
 import com.kanhaiyajewellers.creditmanager.`data`.db.entity.Payment
+import com.kanhaiyajewellers.creditmanager.`data`.model.PaymentLedgerItem
 import javax.`annotation`.processing.Generated
 import kotlin.Double
 import kotlin.Int
@@ -70,6 +71,45 @@ public class PaymentDao_Impl(
           val _tmpCreatedAt: Long
           _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
           _item = Payment(_tmpId,_tmpTransactionId,_tmpAmount,_tmpCreatedAt)
+          _result.add(_item)
+        }
+        _result
+      } finally {
+        _stmt.close()
+      }
+    }
+  }
+
+  public override suspend fun getPaymentsForCustomer(customerId: Long): List<PaymentLedgerItem> {
+    val _sql: String = """
+        |
+        |        SELECT p.transaction_id AS transactionId,
+        |               p.amount AS amount,
+        |               p.created_at AS createdAt
+        |        FROM payments p
+        |        INNER JOIN transactions t ON p.transaction_id = t.id
+        |        WHERE t.customer_id = ?
+        |        ORDER BY p.created_at ASC
+        |    
+        """.trimMargin()
+    return performSuspending(__db, true, false) { _connection ->
+      val _stmt: SQLiteStatement = _connection.prepare(_sql)
+      try {
+        var _argIndex: Int = 1
+        _stmt.bindLong(_argIndex, customerId)
+        val _cursorIndexOfTransactionId: Int = 0
+        val _cursorIndexOfAmount: Int = 1
+        val _cursorIndexOfCreatedAt: Int = 2
+        val _result: MutableList<PaymentLedgerItem> = mutableListOf()
+        while (_stmt.step()) {
+          val _item: PaymentLedgerItem
+          val _tmpTransactionId: Long
+          _tmpTransactionId = _stmt.getLong(_cursorIndexOfTransactionId)
+          val _tmpAmount: Double
+          _tmpAmount = _stmt.getDouble(_cursorIndexOfAmount)
+          val _tmpCreatedAt: Long
+          _tmpCreatedAt = _stmt.getLong(_cursorIndexOfCreatedAt)
+          _item = PaymentLedgerItem(_tmpTransactionId,_tmpAmount,_tmpCreatedAt)
           _result.add(_item)
         }
         _result

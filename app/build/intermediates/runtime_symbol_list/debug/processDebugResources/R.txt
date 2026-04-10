@@ -3277,6 +3277,7 @@ int id bounceEnd 0x7f080067
 int id bounceStart 0x7f080068
 int id btnAddPayment 0x7f080069
 int id btnConfirmPayment 0x7f08006a
+int id btnExportLedger 0x7f080250
 int id btnSaveTransaction 0x7f08006b
 int id btnThankYouMessage 0x7f080245
 int id btnWhatsAppThankYou 0x7f080246
@@ -3557,6 +3558,7 @@ int id pooling_container_listener_holder_tag 0x7f08017a
 int id position 0x7f08017b
 int id postLayout 0x7f08017c
 int id pressed 0x7f08017d
+int id progressExportLedger 0x7f080251
 int id progress_circular 0x7f08017e
 int id progress_horizontal 0x7f08017f
 int id radio 0x7f080180
@@ -4033,6 +4035,7 @@ int string error_icon_content_description 0x7f100037
 int string error_invalid_amount 0x7f100038
 int string error_phone 0x7f100039
 int string error_required 0x7f10003a
+int string export_ledger_pdf 0x7f1000d5
 int string exposed_dropdown_menu_content_description 0x7f10003b
 int string fab_transformation_scrim_behavior 0x7f10003c
 int string fab_transformation_sheet_behavior 0x7f10003d
@@ -4044,6 +4047,8 @@ int string icon_content_description 0x7f10003f
 int string item_name 0x7f100040
 int string item_view_role_description 0x7f100041
 int string item_weight 0x7f1000c3
+int string ledger_export_success 0x7f1000d6
+int string ledger_exporting 0x7f1000d7
 int string loyal_customer 0x7f1000d0
 int string loyal_customer_unlocked 0x7f1000d1
 int string m3_exceed_max_badge_text_suffix 0x7f100042
@@ -4148,6 +4153,7 @@ int string mtrl_timepicker_cancel 0x7f1000a4
 int string mtrl_timepicker_confirm 0x7f1000a5
 int string nav_app_bar_navigate_up_description 0x7f1000a6
 int string nav_app_bar_open_drawer_description 0x7f1000a7
+int string no_ledger_entries 0x7f1000d8
 int string no_results 0x7f1000a8
 int string no_transactions 0x7f1000a9
 int string offer_discount_suggestion 0x7f1000d2
@@ -4165,6 +4171,7 @@ int string phone_number 0x7f1000b2
 int string promise_return_date 0x7f1000c6
 int string recent_transactions 0x7f1000b3
 int string remaining_amount 0x7f1000b4
+int string save_pdf 0x7f1000d9
 int string save_transaction 0x7f1000b5
 int string search_hint 0x7f1000b6
 int string search_menu_title 0x7f1000b7
@@ -4175,6 +4182,7 @@ int string select_date 0x7f1000c7
 int string send_offer_whatsapp 0x7f1000d3
 int string send_thank_you_message 0x7f1000cc
 int string send_whatsapp_reminder 0x7f1000c8
+int string share_whatsapp 0x7f1000da
 int string side_sheet_accessibility_pane_title 0x7f1000bb
 int string side_sheet_behavior 0x7f1000bc
 int string status_bar_notification_info_overflow 0x7f1000bd
@@ -7451,3 +7459,4 @@ int styleable ViewTransition_upDuration 13
 int styleable ViewTransition_viewTransitionMode 14
 int[] styleable include { 0x7f030138 }
 int styleable include_constraintSet 0
+int xml file_paths 0x7f130000

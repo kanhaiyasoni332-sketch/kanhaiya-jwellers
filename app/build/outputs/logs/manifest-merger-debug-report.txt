@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:35:9-43:20
+	android:grantUriPermissions
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:39:13-47
+	android:authorities
+		INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:37:13-60
+	android:exported
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:38:13-37
+	android:name
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:36:13-62
 manifest
-ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-37:12
-INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-37:12
+ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:2:1-47:12
 MERGED from [androidx.databinding:viewbinding:9.1.0] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/b6abc7a5b2d01406c03cac7f1baa7b7d/transformed/viewbinding-9.1.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/2921d857cfd31ccc6bd032508291682c/transformed/navigation-common-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/ae4799011914743688276a9ae814582b/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
@@ -81,8 +92,8 @@ ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:4:22-74
 application
-ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:6:5-35:19
-INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:6:5-35:19
+ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:6:5-45:19
+INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:6:5-45:19
 MERGED from [com.google.android.material:material:1.11.0] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/3cce37d15d67de747dd7ef2080dfabde/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/3cce37d15d67de747dd7ef2080dfabde/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/kanhaiyasoni/.gradle/caches/9.3.1/transforms/e0ad98c890e8d523da65e56033cb7ac8/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -155,6 +166,12 @@ ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidMani
 		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:33:13-37
 	android:name
 		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:32:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:40:13-42:54
+	android:resource
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:42:17-51
+	android:name
+		ADDED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml:41:17-67
 uses-sdk
 INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/AndroidManifest.xml

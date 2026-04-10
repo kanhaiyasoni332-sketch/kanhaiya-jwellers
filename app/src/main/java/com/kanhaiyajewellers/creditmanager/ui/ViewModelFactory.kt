@@ -29,7 +29,7 @@ class ViewModelFactory(private val db: AppDatabase) : ViewModelProvider.Factory 
                 TransactionDetailViewModel(db.transactionDao(), db.paymentDao()) as T
 
             modelClass.isAssignableFrom(com.kanhaiyajewellers.creditmanager.ui.customerhistory.CustomerHistoryViewModel::class.java) ->
-                com.kanhaiyajewellers.creditmanager.ui.customerhistory.CustomerHistoryViewModel(db.transactionDao()) as T
+                com.kanhaiyajewellers.creditmanager.ui.customerhistory.CustomerHistoryViewModel(db.transactionDao(), db.paymentDao()) as T
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

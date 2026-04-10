@@ -157,6 +157,26 @@ interface TransactionDao {
     fun getTransactionsByCustomerId(customerId: Long): LiveData<List<TransactionWithCustomer>>
 
     @Query("""
+        SELECT t.id           AS transactionId,
+               t.customer_id  AS customerId,
+               c.name         AS customerName,
+               c.phone        AS phone,
+               t.item_name    AS itemName,
+               t.item_weight  AS itemWeight,
+               t.promise_date AS promiseDate,
+               t.total_amount AS totalAmount,
+               t.paid_amount  AS paidAmount,
+               t.remaining_amount AS remainingAmount,
+               t.status       AS status,
+               t.created_at   AS createdAt
+        FROM   transactions t
+        INNER JOIN customers c ON t.customer_id = c.id
+        WHERE  t.customer_id = :customerId
+        ORDER  BY t.created_at ASC
+    """)
+    suspend fun getTransactionsByCustomerIdSync(customerId: Long): List<TransactionWithCustomer>
+
+    @Query("""
         SELECT t.id AS transactionId,
                t.customer_id AS customerId,
                c.name AS customerName,
