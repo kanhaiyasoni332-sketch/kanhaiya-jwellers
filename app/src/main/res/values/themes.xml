@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme -->
+    <style name="Theme.KanhaiyaJewellers" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/gold_primary</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/gold_accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Surface -->
+        <item name="colorSurface">@color/background_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Background -->
+        <item name="android:windowBackground">@color/background_primary</item>
+
+        <!-- System bars -->
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:navigationBarColor">@color/background_secondary</item>
+
+        <!-- Light/Dark icons -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+
+    </style>
+
+    <!-- Splash Screen theme -->
+    <style name="Theme.KanhaiyaJewellers.Splash" parent="Theme.KanhaiyaJewellers">
+        <item name="android:windowBackground">@color/background_primary</item>
+    </style>
+
+    <!-- Base Widget -->
+    <style name="Widget.KanhaiyaJewellers" parent="android:Widget" />
+
+    <!-- Gold Button -->
+    <style name="Widget.KanhaiyaJewellers.Button.Gold" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="backgroundTint">@color/gold_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Outlined Button -->
+    <style name="Widget.KanhaiyaJewellers.Button.Gold.Outline" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/gold_primary</item>
+        <item name="strokeColor">@color/gold_primary</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Widget.KanhaiyaJewellers.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/background_primary</item>
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextColor">@color/gold_primary</item>
+        <item name="subtitleTextColor">@color/text_secondary</item>
+        <item name="navigationIconTint">@color/gold_primary</item>
+    </style>
+
+    <!-- TextInputLayout Style -->
+    <style name="Widget.KanhaiyaJewellers.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/gold_primary</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="hintTextColor">@color/gold_primary</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="startIconTint">@color/gold_primary</item>
+        <item name="endIconTint">@color/gold_primary</item>
+    </style>
+
+</resources>

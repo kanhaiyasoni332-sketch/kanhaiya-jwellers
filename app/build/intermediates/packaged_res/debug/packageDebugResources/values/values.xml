@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="background_card">#1A1A1A</color>
+    <color name="background_primary">#0B0B0B</color>
+    <color name="background_secondary">#121212</color>
+    <color name="black">#000000</color>
+    <color name="divider">#2A2A2A</color>
+    <color name="gold_accent">#E6C76A</color>
+    <color name="gold_dark">#A67C00</color>
+    <color name="gold_primary">#D4AF37</color>
+    <color name="ripple_gold">#33D4AF37</color>
+    <color name="status_completed">#4CAF50</color>
+    <color name="status_pending">#FF4D4D</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#BFBFBF</color>
+    <color name="transparent">#00000000</color>
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="input_corner_radius">8dp</dimen>
+    <dimen name="item_min_height">68dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+    <dimen name="stat_card_min_width">120dp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_body_large">16sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_display">36sp</dimen>
+    <dimen name="text_size_heading">28sp</dimen>
+    <dimen name="text_size_kj_logo">80sp</dimen>
+    <dimen name="text_size_subtitle">18sp</dimen>
+    <dimen name="text_size_title">22sp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <string name="add_payment">Add Payment</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="app_name">Kanhaiya Jewellers</string>
+    <string name="app_subtitle">Credit Manager</string>
+    <string name="completed_transactions">Completed</string>
+    <string name="confirm_payment">Confirm Payment</string>
+    <string name="created_on">Created On</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="due_today">Due Today</string>
+    <string name="error_invalid_amount">Enter a valid amount</string>
+    <string name="error_phone">Enter a valid 10-digit phone number</string>
+    <string name="error_required">This field is required</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_weight">Item Weight (gm)</string>
+    <string name="no_results">No results found</string>
+    <string name="no_transactions">No transactions yet.\nTap + to add one.</string>
+    <string name="paid_amount">Paid Amount (₹)</string>
+    <string name="paid_badge">Paid ✅</string>
+    <string name="payment_amount">Payment Amount (₹)</string>
+    <string name="payment_completed">Payment Completed ✅</string>
+    <string name="pending_customers">Pending Customers</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="promise_return_date">Promise Return Date</string>
+    <string name="recent_transactions">Recent Transactions</string>
+    <string name="remaining_amount">Remaining Amount</string>
+    <string name="save_transaction">Save Transaction</string>
+    <string name="search_hint">Search by name or phone…</string>
+    <string name="select_date">Select Date</string>
+    <string name="send_thank_you_message">Send Thank You Message</string>
+    <string name="send_whatsapp_reminder">Send WhatsApp Reminder</string>
+    <string name="status_completed">COMPLETED</string>
+    <string name="status_pending">PENDING</string>
+    <string name="total_amount">Total Amount (₹)</string>
+    <string name="total_pending_amount">Total Pending Amount</string>
+    <string name="transaction_detail">Transaction Detail</string>
+    <string name="upcoming_payments">Upcoming Payments</string>
+    <style name="Theme.KanhaiyaJewellers" parent="Theme.Material3.DayNight.NoActionBar">
+
+        
+        <item name="colorPrimary">@color/gold_primary</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        
+        <item name="colorSecondary">@color/gold_accent</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        
+        <item name="colorSurface">@color/background_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        
+        <item name="android:windowBackground">@color/background_primary</item>
+
+        
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:navigationBarColor">@color/background_secondary</item>
+
+        
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" ns1:targetApi="o_mr1">false</item>
+
+    </style>
+    <style name="Theme.KanhaiyaJewellers.Splash" parent="Theme.KanhaiyaJewellers">
+        <item name="android:windowBackground">@color/background_primary</item>
+    </style>
+    <style name="Widget.KanhaiyaJewellers" parent="android:Widget"/>
+    <style name="Widget.KanhaiyaJewellers.Button.Gold" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="backgroundTint">@color/gold_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="Widget.KanhaiyaJewellers.Button.Gold.Outline" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/gold_primary</item>
+        <item name="strokeColor">@color/gold_primary</item>
+    </style>
+    <style name="Widget.KanhaiyaJewellers.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/gold_primary</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="hintTextColor">@color/gold_primary</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="startIconTint">@color/gold_primary</item>
+        <item name="endIconTint">@color/gold_primary</item>
+    </style>
+    <style name="Widget.KanhaiyaJewellers.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/background_primary</item>
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextColor">@color/gold_primary</item>
+        <item name="subtitleTextColor">@color/text_secondary</item>
+        <item name="navigationIconTint">@color/gold_primary</item>
+    </style>
+</resources>

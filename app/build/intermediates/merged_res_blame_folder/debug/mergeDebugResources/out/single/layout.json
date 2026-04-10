@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_transaction_detail.xml",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_transaction_detail.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/activity_main.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/dialog_add_payment.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/dialog_add_payment.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_payment.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_payment.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_customer_history.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_customer_history.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_transaction.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_transaction.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_upcoming_payment.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_upcoming_payment.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_dashboard.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/activity_splash.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_customer.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_customer.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_transaction_detail.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_transaction_detail.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_search.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/fragment_add_transaction.xml",
+        "source": "/Users/kanhaiyasoni/.gradle/daemon/9.3.1/com.kanhaiyajewellers.creditmanager.app-main-53:/layout/fragment_add_transaction.xml"
+    },
+    {
+        "merged": "com.kanhaiyajewellers.creditmanager.app-mergeDebugResources-50:/layout/item_customer.xml",
+        "source": "com.kanhaiyajewellers.creditmanager.app-main-53:/layout/item_customer.xml"
+    }
+]

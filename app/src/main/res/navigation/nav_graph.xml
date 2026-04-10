@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <!-- Dashboard -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.kanhaiyajewellers.creditmanager.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_addTransactionFragment"
+            app:destination="@id/addTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_customerHistoryFragment"
+            app:destination="@id/customerHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Search -->
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.kanhaiyajewellers.creditmanager.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_searchFragment_to_customerHistoryFragment"
+            app:destination="@id/customerHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Customer History -->
+    <fragment
+        android:id="@+id/customerHistoryFragment"
+        android:name="com.kanhaiyajewellers.creditmanager.ui.customerhistory.CustomerHistoryFragment"
+        android:label="Customer History"
+        tools:layout="@layout/fragment_customer_history">
+
+        <argument
+            android:name="customerId"
+            app:argType="long" />
+        <argument
+            android:name="customerName"
+            app:argType="string" />
+        <argument
+            android:name="customerPhone"
+            app:argType="string" />
+        <argument
+            android:name="totalPending"
+            app:argType="float" />
+        <argument
+            android:name="totalPaid"
+            app:argType="float" />
+
+        <action
+            android:id="@+id/action_customerHistoryFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Add Transaction -->
+    <fragment
+        android:id="@+id/addTransactionFragment"
+        android:name="com.kanhaiyajewellers.creditmanager.ui.addtransaction.AddTransactionFragment"
+        android:label="Add Transaction"
+        tools:layout="@layout/fragment_add_transaction" />
+
+    <!-- Transaction Detail -->
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.kanhaiyajewellers.creditmanager.ui.transactiondetail.TransactionDetailFragment"
+        android:label="Transaction Detail"
+        tools:layout="@layout/fragment_transaction_detail">
+
+        <argument
+            android:name="transactionId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
+
+</navigation>

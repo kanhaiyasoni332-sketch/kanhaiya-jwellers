@@ -1,0 +1,8 @@
+com.kanhaiyajewellers.creditmanager.app-pngs-0 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/generated/res/pngs/debug
+com.kanhaiyajewellers.creditmanager.app-resValues-1 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/generated/res/resValues/debug
+com.kanhaiyajewellers.creditmanager.app-updated_navigation_xml-2 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/generated/updated_navigation_xml/debug
+com.kanhaiyajewellers.creditmanager.app-packageDebugResources-3 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.kanhaiyajewellers.creditmanager.app-packageDebugResources-4 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.kanhaiyajewellers.creditmanager.app-debug-5 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.kanhaiyajewellers.creditmanager.app-debug-6 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/debug/res
+com.kanhaiyajewellers.creditmanager.app-main-7 /Users/kanhaiyasoni/Desktop/kanhaiyajwellers/app/src/main/res
